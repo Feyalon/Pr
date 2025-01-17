@@ -7,6 +7,7 @@ on:
 jobs:
   commit:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout репозиторий
         uses: actions/checkout@v3
@@ -16,8 +17,8 @@ jobs:
 
       - name: Push изменений
         run: |
-          git config --global user.name "ВашеИмя"
-          git config --global user.email "ВашEmail@example.com"
+          git config --global user.name "Feyalon"
+          git config --global user.email "gafursharipov3@gmail.com"
           git add activity_log.txt
           git commit -m "Автоматический коммит $(date)"
           git push
