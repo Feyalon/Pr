@@ -1,0 +1,23 @@
+name: Автоматический коммит
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # Запуск каждый день в 9 утра
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозиторий
+        uses: actions/checkout@v3
+
+      - name: Обновление файла
+        run: echo "$(date): автоматический коммит" >> activity_log.txt
+
+      - name: Push изменений
+        run: |
+          git config --global user.name "ВашеИмя"
+          git config --global user.email "ВашEmail@example.com"
+          git add activity_log.txt
+          git commit -m "Автоматический коммит $(date)"
+          git push
