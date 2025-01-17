@@ -13,12 +13,16 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Обновление файла
-        run: echo "$(date): автоматический коммит" >> activity_log.txt
+        run: |
+          echo "$(date): автоматический коммит" >> activity_log.txt
 
-      - name: Push изменений
+      - name: Настройка Git
         run: |
           git config --global user.name "Feyalon"
           git config --global user.email "gafursharipov3@gmail.com"
+
+      - name: Push изменений
+        run: |
           git add activity_log.txt
           git commit -m "Автоматический коммит $(date)"
           git push
